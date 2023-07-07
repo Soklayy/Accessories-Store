@@ -7,7 +7,6 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\ShoppingController;
 use App\Http\Controllers\User\UserAddressController;
-use App\Models\UserAddress;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,6 +22,7 @@ Route::group(['middleware'=>"auth:sanctum"],function(){
         Route::apiResource('product',ProductController::class);
         Route::match(['put', 'patch'], '/inventory/{product}',[InventoryController::class,'update']);
         Route::get('/inventory/{product}',[InventoryController::class,'show']);
+        Route::apiResource('category',CategoryController::class);
     });
 
     //user
