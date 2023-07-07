@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('inventory_id')->nullable();
             $table->decimal('price');
-            $table->unsignedBigInteger('discount_id')->nullable();
+            $table->unsignedBigInteger('discount_id')->default(1);
             $table->string('image')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
