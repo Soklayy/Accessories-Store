@@ -48,7 +48,8 @@ class ShoppingController extends Controller
         $newShopping = Shopping::find($shopping->id)->first();
         $total = 0;
         foreach ($newShopping->cartItem as $item) {
-            $total += $item->product->price*(1-$item->product->discount->discount_percent/100)* $item->quantity;
+            $total += $item->product->price*(1-$item->product->discount->discount_percent/100
+            )* $item->quantity;
         }
 
         $newShopping->update([
