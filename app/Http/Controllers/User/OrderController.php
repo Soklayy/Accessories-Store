@@ -92,11 +92,16 @@ class OrderController extends Controller
                 ]);
 
                 $user = User::find($order->user_id)->first();
+                $user->shopping->update([
+                    'total' => 0
+                ]);
 
                 foreach($user->shopping->cartItem as $item){
                     $item->delete();
                 }
             }
+
+            return route('webhook', $order);
         }
     }
 
@@ -143,11 +148,6 @@ class OrderController extends Controller
             throw $th;
         }
     }
-
-    private function oldOrder(Order $order){
-
-    }
-
 
 }
 
